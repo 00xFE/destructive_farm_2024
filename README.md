@@ -23,6 +23,18 @@ Per Comodità conviene che in tutto l'exploit si usi il flush=True.
 La parte server di destructive farm si occupa delle flag submission.
 Si trova tutta nella cartella `server`.
 
+### Docker Setup
+Con la configurazione docker, i parametri necessari vengono gestiti attraverso le variabili d'ambiente passate al container, i parametri sono gli stessi descritti di seguito, **di default viene impostato il server di destructive per funzionare con HTTP flag submition con `X-Team-Token`**.
+Di seguito i parametri necessari all'esecuzione:
+```yaml
+TEAM_TOKEN: "token-del-team"
+FLAG_REGEX: "[A-Z0-9]{31}="
+# Attenzione!!! TEAMS_RANGE contiene la subnet degli IP, il primo HOST ID e l'ultimo HOST ID separati da /
+TEAMS_RANGE: "10.60.0/2/69" # Tutti gli IP cominceranno per 10.60.0, verranno presi tutti gli IP tra il 10.60.0.2 e il 10.60.0.69 entrambi compresi
+SUBMIT_IP: "10.10.0.1"
+SERVER_PASSWORD: "pingugiordano"
+```
+
 ### Flag submission
 Nel file `config.py` bisogna decommentare e configurare il tipo di protocollo per la submission delle flag.
 I protocolli supportati sono dentro la cartella `protocols`, nel caso nella cartella non ci sia il protocollo corretto per la gara il file deve essere scritto da voi o dato direttamente dal creatore della gara (nel caso di protocolli custom).

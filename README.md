@@ -25,10 +25,11 @@ Si trova tutta nella cartella `server`.
 
 ### Docker Setup
 Con la configurazione docker, i parametri necessari vengono gestiti attraverso le variabili d'ambiente passate al container, i parametri sono gli stessi descritti di seguito, **di default viene impostato il server di destructive per funzionare con HTTP flag submition con `X-Team-Token`**.
-Di seguito i parametri necessari all'esecuzione:
+Di seguito i parametri **necessari** all'esecuzione:
 ```yaml
 TEAM_TOKEN: "token-del-team"
 FLAG_REGEX: "[A-Z0-9]{31}="
+VM_IP: "10.60.35.1" # IP della nostra vm di gara (sarà contenuto in TEAMS_RANGE, ma non verrà incluso nelle macchine da attaccare)
 # Attenzione!!! TEAMS_RANGE contiene la format string degli IP, il primo HOST e l'ultimo HOST separati da /
 TEAMS_RANGE: "10.60.0.{}/2/69" # Tutti gli IP cominceranno per 10.60.0, verranno presi tutti gli IP tra il 10.60.0.2 e il 10.60.0.69 entrambi compresi
 SUBMIT_URL: "http://10.10.0.1:8080/flags"

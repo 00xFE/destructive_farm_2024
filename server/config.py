@@ -5,14 +5,15 @@ def get_env(name: str) -> str:
     except KeyError:
         raise EnvironmentError(f"Required environment variable '{name}' not found.")
 
+TEMP_FORMAT_IP, TEMP_START_IP, TEMP_END_IP = get_env("TEAMS_RANGE").split("/")
 
 CONFIG = {
     # Don't forget to remove the old database (flags.sqlite) before each competition.
 
     # The clients will run sploits on TEAMS and
     # fetch FLAG_FORMAT from sploits' stdout.
-    'TEAMS': {'Team #{}'.format(i): get_env("TEAMS_RANGE").split("/")[0].format(i)
-             for i in range(int(get_env("TEAMS_RANGE").split("/")[1]), int(get_env("TEAMS_RANGE").split("/")[2]) + 1)},
+    'TEAMS': {'Team #{}'.format(i): TEMP_FORMAT_IP.format(i)
+             for i in range(int(TEMP_START_IP), int(TEMP_END_IP)) if TEMP_FORMAT_IP.format(i) != get_env("VM_IP")},
     'FLAG_FORMAT': r'{}'.format(get_env("FLAG_REGEX")),
 
     # This configures how and where to submit flags.

@@ -11,7 +11,7 @@ CONFIG = {
 
     # The clients will run sploits on TEAMS and
     # fetch FLAG_FORMAT from sploits' stdout.
-    'TEAMS': {'Team #{}'.format(i): '{}.{}'.format(get_env("TEAMS_RANGE").split("/")[0], i)
+    'TEAMS': {'Team #{}'.format(i): get_env("TEAMS_RANGE").split("/")[0].format(i)
              for i in range(int(get_env("TEAMS_RANGE").split("/")[1]), int(get_env("TEAMS_RANGE").split("/")[2]) + 1)},
     'FLAG_FORMAT': r'{}'.format(get_env("FLAG_REGEX")),
 
@@ -23,7 +23,7 @@ CONFIG = {
     # 'SYSTEM_PORT': 31337,
 
     'SYSTEM_PROTOCOL': 'ructf_http',
-    'SYSTEM_URL': 'http://{}:8080/flags.php'.format(get_env("SUBMIT_IP")),
+    'SYSTEM_URL': get_env("SUBMIT_URL"),
     'SYSTEM_TOKEN': get_env("TEAM_TOKEN"),
 
     # 'SYSTEM_PROTOCOL': 'volgactf',

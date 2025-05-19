@@ -29,9 +29,9 @@ Di seguito i parametri necessari all'esecuzione:
 ```yaml
 TEAM_TOKEN: "token-del-team"
 FLAG_REGEX: "[A-Z0-9]{31}="
-# Attenzione!!! TEAMS_RANGE contiene la subnet degli IP, il primo HOST ID e l'ultimo HOST ID separati da /
-TEAMS_RANGE: "10.60.0/2/69" # Tutti gli IP cominceranno per 10.60.0, verranno presi tutti gli IP tra il 10.60.0.2 e il 10.60.0.69 entrambi compresi
-SUBMIT_IP: "10.10.0.1"
+# Attenzione!!! TEAMS_RANGE contiene la format string degli IP, il primo HOST e l'ultimo HOST separati da /
+TEAMS_RANGE: "10.60.0.{}/2/69" # Tutti gli IP cominceranno per 10.60.0, verranno presi tutti gli IP tra il 10.60.0.2 e il 10.60.0.69 entrambi compresi
+SUBMIT_URL: "http://10.10.0.1:8080/flags"
 SERVER_PASSWORD: "pingugiordano"
 ```
 
